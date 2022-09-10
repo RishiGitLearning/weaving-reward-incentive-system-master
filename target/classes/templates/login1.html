@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/login.css}"/>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" th:action="@{/process_login}" method="get" th:object="${user}">
+            <input type="loginId" name="loginId" placeholder="Username" th:field="*{loginId}" required/>
+            <input type="password" name="password" placeholder="Password" th:field="*{password}" required/>
+            <button>login</button>
+            <br></br>
+          <!--  <label>New User<a th:href="@{/register}">Register</a></label> -->
+        </form>
+    </div>
+    <div th:if="${param.error}" class="alert alert-danger">
+        <p  style="color:red;">Invalid username/password</p>
+    </div>
+      <a href="http://technoride.net.in" target="_blank" style="color : yellow; text-align: center;">Powered By TSPL, Vadodara</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/empwiseDetailIncentive.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script th:inline="javascript">
+    var real_data = /*[[${empList}]]*/'noValue';
+    $(document).ready(function() {
+        $("#empNo").autocomplete({
+            minLength : 1,
+            source : real_data,
+            select : function(e, ui) {
+                    return ui.item.value;
+            }
+        })
+    });
+</script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Daily Employee Rate</p>
+    <table id="mainTable"><tr>
+        <td><li><a th:href="@{/monthlyIncentive}">Monthly Incentive</a></li></td>
+        <!--   <td><li><a th:href="@{/incentive/incentiveHierarchyBasedForm}">MonthWise Incentive</a></li></td>-->
+        <td><li><a th:href="@{/incentiveEmployeewise}">Employeewise Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveEmployeewiseDetails}">Employeewise Incentive Details</a></li></td>
+        <!-- <td><li><a th:href="@{/incentive/incentivePtax}">Incentive-Ptax</a></li></td>
+         <td><li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li></td>
+         <td th:if="${message}" th:text="${message}" th:class="${'alert1 ' + alertClass}"/>-->
+        <td th:if="${message1}">
+            <li><a th:href="@{/incentiveUnlock}">Unlock Incentive </a></li>
+        </td>
+    </tr>
+    </table>
+    <div class="rewardcriteria">
+       <!-- <form th:action="@{/processIncentiveEmployeewiseDetails}" method="get">-->
+        <form>
+            <table align="center">
+                <!--     <tr>
+                         <td>
+                             Employee No
+                         </td>
+                         <td>
+                             <input type="text" id="emp" th:value="${emp}" name="emp">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Year
+                         </td>
+                         <td>
+                             <input type="text" id="year" th:value="${year}" name="year">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                             Month
+                         </td>
+                         <td>
+                             <input type="text" id="month" th:value="${month}" name="month">
+                         </td>
+                     </tr>
+                     <tr>
+                         <td>
+                         <button type="submit">Show Incentive</button>
+                         </td>
+                     </tr>-->
+                     <tr>
+                         <td>
+                             <label for="empNo">Select Employee Id </label></td><td><input id="empNo" th:value="${empNo}" name="empNo" /></td>
+
+                         <td>Select Year</td>
+                         <td>
+                             <select name="yearSel" id="yearSel">
+                                 <option th:each="year : ${yearList}"
+                                         th:value="${year}"
+                                         th:text="${year}"></option>
+                             </select>
+                         </td>
+
+                         <td>Select Month</td>
+                         <td>
+                             <select name="monthSel" id="monthSel">
+                                 <option th:each="month : ${monthList}"
+                                         th:value="${month}"
+                                         th:text="${month}"></option>
+                             </select>
+                         </td>
+
+                         <td>
+                          <!--   <button type="submit">Show Incentive</button>-->
+                             <input type="button" th:onclick="showLoader()" name="submit" value="Show Incentive Details" id="submit1">
+                         </td>
+                         <!-- <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/> -->
+                         <td id="messageId">
+
+                         </td>
+
+                     </tr>
+            </table>
+        </form>
+        <div style="height:320px;overflow:auto;">
+            <div align="center">
+                <span id="upload-header-text"></span>
+            </div>
+            <table id="empTable" class="table table-striped" rules="rows" align="center">
+                <tbody>
+
+                </tbody>
+              <!--  <tr>
+                    <th>Sr No</th>
+                    <th>Emp No</th>
+                    <th>Emp Name</th>
+                    <th>Date</th>
+                    <th>Category Grade</th>
+                    <th>Designation Grade</th>
+                    <th>Selection Grade</th>
+                    <th>Rate</th>
+                </tr>
+
+                <tr th:each="employeeIncentive : ${employeewiseIncentiveDetailsList}">
+                    <td th:text="${employeeIncentive.srNo}"></td>
+                    <td th:text="${employeeIncentive.empId}"></td>
+                    <td th:text="${employeeIncentive.empName}"></td>
+                    <td th:text="${employeeIncentive.dateInString}"></td>
+                    <td th:text="${employeeIncentive.incCategory}"></td>
+                    <td th:text="${employeeIncentive.incDesignation}"></td>
+                    <td th:text="${employeeIncentive.incSelectionGrade}"></td>
+                    <td th:text="${employeeIncentive.incDailyRate}"></td>
+                </tr>-->
+            </table>
+        </div>
+        <div class="center">
+            <table align="center" style="width:800px" >
+                <tr>
+                   <td id="detailDaysWithRate">
+
+                   </td>
+
+                  <!--      <form th:action="@{/incentive/exportIncentiveEmployeewiseDetails}" method="post" th:object="${weaverRewardList}">
+                            <input type="submit" name="frmSubmit" id="excel" value="Export Data" class="subButton" />
+                        </form>-->
+
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/deleteRewardSlab.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Delete Reward Slab</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+            <!--   <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <!-- <form th:action="@{/processIncentiveUnlock}" method="get">-->
+        <form>
+            <table align="center">
+                <tr>
+                    <td>Select Id</td>
+                    <td>
+                        <select name="idSel" id="idSel" style="width:220px">
+                            <option th:each="id : ${idList}"
+                                    th:value="${id}"
+                                    th:text="${id}"></option>
+                        </select>
+                    </td>
+                    <td>
+                        <!--  <button type="submit">Incentive Unlock</button> -->
+                        <input type="button" th:onclick="showLoader()" name="submit" value="Refresh Reward" id="submit1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>LOOM</td>
+                    <td>
+                        <input type="text" id="loom">
+                    </td>
+                    <td>RPM</td>
+                    <td>
+                        <input type="text" id="rpm">
+                    </td>
+                </tr>
+                <tr>
+                    <td>EFF_PER</td>
+                    <td>
+                        <input type="text" id="effPer">
+                    </td>
+                    <td>PRODN_PER_HR</td>
+                    <td>
+                        <input type="text" id="prodnPerHr">
+                    </td>
+                </tr>
+                <tr>
+                    <td>WEFT_DETAILS</td>
+                    <td>
+                        <input type="text" id="weftDetails" size="40">
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB</td>
+                    <td><input type="text" id="shiftAB" /></td>
+                    <td>SHIFT_C</td>
+                    <td><input type="text" id="shiftC" /></td>
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS</td>
+                    <td><input type="text" id="shiftABPicksForRewards" /></td>
+
+                    <td>SHIFT_C_PICKS_FOR_REWARDS</td>
+                    <td><input type="text" id="shiftCPicksForRewards" /></td>
+
+                    <td>REWARDS1_RS</td>
+                    <td><input type="text" id="reward1" /></td>
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS2</td>
+                    <td><input type="text" id="shiftABPicksForRewards2" /></td>
+
+                    <td>SHIFT_C_PICKS_FOR_REWARDS2</td>
+                    <td><input type="text" id="shiftCPicksForRewards2" /></td>
+
+                    <td>REWARDS2_RS</td>
+                    <td><input type="text" id="reward2" /></td>
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS3</td>
+                    <td><input type="text" id="shiftABPicksForRewards3" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS3</td>
+                    <td><input type="text" id="shiftCPicksForRewards3" /></td>
+                    <td>REWARDS3_RS</td>
+                    <td><input type="text" id="reward3" /></td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS4</td>
+                    <td><input type="text" id="shiftABPicksForRewards4" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS4</td>
+                    <td><input type="text" id="shiftCPicksForRewards4" /></td>
+                    <td>REWARDS4_RS</td>
+                    <td><input type="text" id="reward4" /></td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS5</td>
+                    <td><input type="text" id="shiftABPicksForRewards5" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS5</td>
+                    <td><input type="text" id="shiftCPicksForRewards5" /></td>
+                    <td>REWARDS5_RS</td>
+                    <td><input type="text" id="reward5" /></td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS6</td>
+                    <td><input type="text" id="shiftABPicksForRewards6" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS6</td>
+                    <td><input type="text" id="shiftCPicksForRewards6" /></td>
+                    <td>REWARDS6_RS</td>
+                    <td><input type="text" id="reward6" /></td>
+
+                </tr>
+                <tr>
+
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS7</td>
+                    <td><input type="text" id="shiftABPicksForRewards7" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS7</td>
+                    <td><input type="text" id="shiftCPicksForRewards7" /></td>
+                    <td>REWARDS7_RS</td>
+                    <td><input type="text" id="reward7" /></td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS8</td>
+                    <td><input type="text" id="shiftABPicksForRewards8" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS8</td>
+                    <td><input type="text" id="shiftCPicksForRewards8" /></td>
+                    <td>REWARDS8_RS</td>
+                    <td><input type="text" id="reward8" /></td>
+
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS9</td>
+                    <td><input type="text" id="shiftABPicksForRewards9" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS9</td>
+                    <td><input type="text" id="shiftCPicksForRewards9" /></td>
+                    <td>REWARDS9_RS</td>
+                    <td><input type="text" id="reward9" /></td>
+
+                </tr>
+                <tr>
+                    <td>SHIFT_AB_PICKS_FOR_REWARDS10</td>
+                    <td><input type="text" id="shiftABPicksForRewards10" /></td>
+                    <td>SHIFT_C_PICKS_FOR_REWARDS10</td>
+                    <td><input type="text" id="shiftCPicksForRewards10" /></td>
+                    <td>REWARDS10_RS</td>
+                    <td><input type="text" id="reward10" /></td>
+                </tr>
+                <!--  <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+                  </td>-->
+                <td>
+                    <!--  <button type="submit">Incentive Unlock</button> -->
+                    <input type="button" th:onclick="showLoader1()" name="submit" value="Delete Reward" id="submit2">
+                </td>
+                <td id="messageId">
+
+                </td>
+            </table>
+        </form>
+        <div align="center">
+            <span id="upload-header-text"></span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

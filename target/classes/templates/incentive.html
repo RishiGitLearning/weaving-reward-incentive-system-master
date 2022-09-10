@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Incentive</p>
+   <table id="mainTable"><tr>
+       <td><li><a th:href="@{/monthlyIncentive}">Monthly Incentive</a></li></td>
+       <td><li><a th:href="@{/monthlyIncentiveAttendance}" id="monthlyIncAttendanceLinkId">Monthly Attendance</a></li></td>
+       <!--   <td><li><a th:href="@{/incentive/incentiveHierarchyBasedForm}">MonthWise Incentive</a></li></td>-->
+       <td><li><a th:href="@{/incentiveEmployeewise}">Employee Incentive</a></li></td>
+       <!--  <td><li><a th:href="@{/incentiveEmployeewiseDetails}">Employeewise Incentive Details</a></li></td>-->
+        <td><li><a th:href="@{/incentiveCriteria}">Incentive Criteria</a></li></td>
+       <!-- <td><li><a th:href="@{/incentive/incentivePtax}">Incentive-Ptax</a></li></td>
+        <td><li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li></td>
+        <td th:if="${message}" th:text="${message}" th:class="${'alert1 ' + alertClass}"/>-->
+       <td th:if="${message1}">
+           <li><a th:href="@{/incentiveUnlock}">Unlock Incentive</a></li>
+       </td>
+   </tr>
+   </table>
+
+</div>
+
+</body>
+</html>

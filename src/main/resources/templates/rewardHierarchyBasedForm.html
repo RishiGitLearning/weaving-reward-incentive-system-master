@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/rewardHierarchyBasedForm.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Daily Reward</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+           <!-- <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+    <div class="rewardcriteria">
+     <!--   <form th:action="@{/processRewardHierarchyBasedForm}" method="get">-->
+        <form>
+            <table align="center">
+                <tr>
+                    <td>Select Start Date</td>
+                    <td><input type="date" th:value="${startdate}" id="startdate" name="startdate" class="date" /></td>
+                    <td>Select End Date</td>
+                    <td><input type="date" th:value="${enddate}" id="enddate" name="enddate" class="date" /></td>
+
+                    <td colspan="2">
+                        <!--<button>Show Rewards</button>-->
+                        <input type="button" th:onclick="showLoader()" name="submit" value="Show Reward" id="submit1">
+                    </td>
+                    <td id="messageId">
+
+                    </td>
+                   <!-- <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>-->
+                </tr>
+            </table>
+        </form>
+        <div style="height:400px;overflow:auto;">
+            <div align="center">
+                <span id="upload-header-text"></span>
+            </div>
+            <table id="empTable" class="table table-striped" rules="rows" align="center">
+                <!--     <thead>
+                         <th>Sr No</th>
+                         <th>Emp No</th>
+                         <th>Emp Name</th>
+                         <th>Designation</th>
+                         <th>RewardDate</th>
+                         <th>Shift</th>
+                         <th>Loom No</th>
+                         <th>Pick meter</th>
+                         <th>Reward</th>
+                         <th>Reward slab</th>
+                    </thead>
+
+                    <tr th:each="weaver : ${weaverList}">
+                         <td th:text="${weaver.srNo}"></td>
+                         <td th:text="${weaver.empNo}"></td>
+                         <td th:text="${weaver.empName}"></td>
+                         <td th:text="${weaver.designation}"></td>
+                         <td th:text="${weaver.dateInString}"></td>
+                         <td th:text="${weaver.shift}"></td>
+                         <td th:text="${weaver.loom_no}"></td>
+                         <td th:text="${weaver.pickMeter}"></td>
+                         <td th:text="${weaver.rewardAmount}"></td>
+                         <td th:text="${weaver.rewardAmountSlab}"></td>
+                     </tr>-->
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <div class="center">
+        <table align="center">
+            <tr>
+                <!-- <td>Total Reward</td>
+                 <td>
+                     <input type="text" th:value="${totalReward}" name="totalReward">
+                 </td>-->
+                <td id="totalReward">
+
+                </td>
+                <td>
+                    <form th:action="@{/exportRewardData}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="pdf" value="Export Pdf Data" class="subButton" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/exportRewardData}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="excel" value="Export Excel Data" class="subButton" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/monthlyIncentiveAttendance.js}"></script>
+    <!--   <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+       <link rel="stylesheet" type="text/css" th:href="@{/style.css}">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Monthly Incentive Attendance</p>
+    <table id="mainTable"><tr>
+        <td><li><a th:href="@{/monthlyIncentive}" id="monthlyIncLinkId">Monthly Incentive</a></li></td>
+        <td><li><a th:href="@{/monthlyIncentiveAttendance}" id="monthlyIncAttendanceLinkId">Monthly Attendance</a></li></td>
+        <!--   <td><li><a th:href="@{/incentive/incentiveHierarchyBasedForm}">MonthWise Incentive</a></li></td>-->
+        <td><li><a th:href="@{/incentiveEmployeewise}" id="empIncLinkId">Employee Incentive</a></li></td>
+   <!--     <td><li><a th:href="@{/incentiveEmployeewiseDetails}" id="empIncDetailLinkId">Employeewise Incentive Details</a></li></td>-->
+        <td><li><a th:href="@{/incentiveCriteria}">Incentive Criteria</a></li></td>
+        <!-- <td><li><a th:href="@{/incentive/incentivePtax}">Incentive-Ptax</a></li></td>
+        <td><li><a th:href="@{/incentiveUnlock}" id="unlockIncLinkId">Unlock Incentive</a></li></td>-->
+        <td th:if="${message1}">
+            <li><a th:href="@{/incentiveUnlock}" id="unlockIncLinkId">Unlock Incentive</a></li>
+        </td>
+    </tr>
+    </table>
+    <div class="rewardcriteria">
+        <form>
+            <!--   <form th:action="@{/incentive/processMonthlyIncentive}" method="get">-->
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"></option>
+                        </select>
+                    </td>
+
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"></option>
+                        </select>
+                    </td>
+
+                    <td>
+                        <!--    <button type="submit">Calculate/Show Incentive</button>
+                            <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>-->
+                        <input type="button" th:onclick="showLoader()" name="submit" value="Show Attendance" id="submit1">
+                    </td>
+                    <td id="messageId"></td>
+                </tr>
+            </table>
+        </form>
+
+        <div style="height:400px;overflow:auto;overflow-x:auto;">
+            <div align="center">
+                <span id="upload-header-text"></span>
+            </div>
+            <table id="empTable" class="table table-striped" rules="rows" align="center">
+
+                <tbody>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+    <div class = "center">
+        <table align="center">
+            <tr>
+                <td>
+                    <form th:action="@{/exportMonthlyIncentiveAttendanceData}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="pdf" value="Export Pdf Data" class="subButton" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/exportMonthlyIncentiveAttendanceData}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="excel" value="Export Excel Data" class="subButton" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

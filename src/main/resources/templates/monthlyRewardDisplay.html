@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <script type="text/javascript" th:src="@{/monthlyReward.js}"></script>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <link rel="stylesheet" th:href="@{/monthlyReward.css}"/>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Reward</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/rewards/monthlyRewards}">Monthly Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/employeeWiseForm}">EmployeeWise Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/loomWiseForm}">LoomWise Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/unlockRewards}">Unlock Reward</a></li></td>
+        </tr>
+    </table>
+    <div class="rewardcriteria">
+        <!--   <form th:action="@{/rewards/processMonthlyRewards}" method="get" th:onClick="showAlert()"-->
+        <form th:action="@{/rewards/processShowMonthlyRewards}" method="get">
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"
+                                    th:selected="${yearSel==year}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"
+                                    th:selected="${monthSel==month}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!--     <input type = "button" onclick = "showAlert()" value = "Calculate Rewards">-->
+                        <button type="submit" th:onclick="showAlert()">Show Rewards</button>
+                    </td>
+                    <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>
+                </tr>
+            </table>
+            <!--    <div class="progress">
+                    <div id="dynamic" class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                        <span id="current-progress"></span>
+                    </div>
+                </div>-->
+        </form>
+        <div style="height:350px;overflow:auto;">
+            <table class="table table-striped" rules="rows" align="center">
+                <tr>
+                    <th>Emp No</th>
+                    <th>Emp Name</th>
+                    <th>Reward Amount</th>
+                </tr>
+
+                <tr th:each="feltWeaverReward : ${feltWeaverRewardList}">
+                    <td th:text="${feltWeaverReward.empNo}"></td>
+                    <td th:text="${feltWeaverReward.empName}"></td>
+                    <td th:text="${feltWeaverReward.rewardAmount}"></td>
+                </tr>
+
+            </table>
+        </div>
+
+    </div>
+    <div class="center">
+        <table align="center">
+            <tr>
+                <td>Total Reward</td>
+                <td>
+                    <input type="text" th:value="${totalMonthReward}" name="totalMonthReward">
+                </td>
+                <td>
+                    <form th:action="@{/rewards/exportMonthlyRewardData}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="excel" value="Export Data" class="subButton" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

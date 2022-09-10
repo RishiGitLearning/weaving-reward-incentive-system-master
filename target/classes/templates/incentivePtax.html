@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Incentive</p>
+    <table id="mainTable"><tr>
+        <td><li><a th:href="@{/monthlyIncentive}">Monthly Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveHierarchyBasedForm}">Monthwise Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveEmployeewise}">Employee Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveEmployeewiseDetails}">Employeewise Incentive Details</a></li></td>
+        <td><li><a th:href="@{/incentivePtax}">Incentive-Ptax</a></li></td>
+        <td><li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li></td>
+    </tr>
+    </table>
+    <div class="rewardcriteria">
+        <form th:action="@{/incentive/processIncentivePtax}" method="get">
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Show IncentivePtax</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div style="height:350px;overflow:auto;">
+            <table class="table table-striped" rules="rows" align="center">
+                <tr>
+                    <th>Emp No</th>
+                    <th>Salary</th>
+                    <th>PtaxSalary</th>
+                    <th>Reward</th>
+                    <th>PtaxReward</th>
+                    <th>Incentive Amount</th>
+                    <th>PtaxIncentive</th>
+                </tr>
+
+                <tr th:each="ptax : ${incentivePtaxList}">
+                    <td th:text="${ptax.ptEmpCode}"></td>
+                    <td th:text="${ptax.ptSalaryGross}"></td>
+                    <td th:text="${ptax.ptSalaryPtax}"></td>
+                    <td th:text="${ptax.ptWvrRewardGross}"></td>
+                    <td th:text="${ptax.ptWvrRewardPtax}"></td>
+                    <td th:text="${ptax.ptWvgIncGross}"></td>
+                    <td th:text="${ptax.ptWvgIncPtax}"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="center">
+            <form th:action="@{/exportIncentivePtaxData}" method="post" th:object="${weaverRewardList}">
+                <input type="submit" name="frmSubmit" id="excel" value="Export Data" class="subButton" />
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

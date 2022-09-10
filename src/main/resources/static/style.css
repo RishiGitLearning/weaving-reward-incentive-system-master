@@ -1,0 +1,100 @@
+/*
+ * Style tweaks
+ * --------------------------------------------------
+ */
+body {
+	padding-top: 50px;
+	background-color: #f5f5f5;
+}
+
+footer {
+	padding-left: 15px;
+	padding-right: 15px;
+	background-color: #fff;
+}
+
+/*
+ * Off Canvas
+ * --------------------------------------------------
+ */
+@media screen and (max-width: 768px) {
+	.row-offcanvas {
+		position: relative;
+		-webkit-transition: all 0.25s ease-out;
+		-moz-transition: all 0.25s ease-out;
+		transition: all 0.25s ease-out;
+	}
+	.row-offcanvas-left
+  .sidebar-offcanvas {
+		left: -33%;
+	}
+	.row-offcanvas-left.active {
+		left: 33%;
+	}
+	.sidebar-offcanvas {
+		position: absolute;
+		top: 0;
+		width: 33%;
+		margin-left: 10px;
+	}
+}
+
+/* Sidebar navigation */
+.nav-sidebar {
+	background-color: #f5f5f5;
+	margin-right: -15px;
+	margin-bottom: 20px;
+	margin-left: -15px;
+	list-style: none;
+	text-align: center;
+}
+
+.nav-sidebar a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.nav-sidebar li {
+	margin-left: -30%;
+}
+
+.nav-sidebar li a:hover {
+	background-color: #bdbdbd;
+	color: #004080;
+}
+
+.nav-sidebar li.selected a {
+	font-color:white;
+}
+
+.active{
+	background-color: #7e7e7e;
+}
+
+.active a{
+	color : white;
+}
+
+
+/*
+ * Main content
+ */
+.main {
+	padding: 00px;
+	background-color: #fff;
+}
+
+@media ( min-width : 768px) {
+	.main {
+		padding-right: 0px;
+		padding-left: 0px;
+	}
+}
+
+.main .page-header {
+	margin-top: 0;
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/monthlyIncentive.js}"></script>
+    <!--   <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+       <link rel="stylesheet" type="text/css" th:href="@{/style.css}">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<table><tr style="background-color:#f5f5f5">
+    <td><li><a th:href="@{/monthlyIncentive}">Monthly Incentive</a></li></td>
+    <!--   <td><li><a th:href="@{/incentive/incentiveHierarchyBasedForm}">MonthWise Incentive</a></li></td>-->
+    <td><li><a th:href="@{/incentiveEmployeewise}">Employeewise Incentive</a></li></td>
+    <td><li><a th:href="@{/incentiveEmployeewiseDetails}">Employeewise Incentive Details</a></li></td>
+    <!-- <td><li><a th:href="@{/incentive/incentivePtax}">Incentive-Ptax</a></li></td>
+     <td><li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li></td>
+     <td th:if="${message}" th:text="${message}" th:class="${'alert1 ' + alertClass}"/>-->
+    <td th:if="${message}">
+        <li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li>
+    </td>
+</tr>
+</table>
+</body>
+</html>

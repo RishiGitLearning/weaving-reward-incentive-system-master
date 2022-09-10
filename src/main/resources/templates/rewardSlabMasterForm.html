@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/rewardLoomwise.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Reward Slab Master</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+            <!--   <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+    <div>
+        <div style="height:500px;overflow:auto;">
+        <table class="table table-striped" rules="rows" align="center">
+          <tr>
+                   <th>Loom</th>
+                   <th>RPM</th>
+                   <th>EFF_PER</th>
+                   <th>PRODN_PER_HR</th>
+                   <th>WEFT_DETAILS</th>
+                   <th>SHIFT_AB</th>
+                    <th>SHIFT_AB_PICKS_FOR_REWARDS</th>
+                    <th>SHIFT_C</th>
+                    <th>SHIFT_C_PICKS_FOR_REWARDS</th>
+                    <th>SHIFT_AB_PICKS_FOR_REWARDS2</th>
+                    <th>SHIFT_C_PICKS_FOR_REWARDS2</th>
+                    <th>SHIFT_AB_PICKS_FOR_REWARDS3</th>
+                    <th>SHIFT_C_PICKS_FOR_REWARDS3</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS4</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS4</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS5</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS5</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS6</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS6</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS7</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS7</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS8</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS8</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS9</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS9</th>
+              <th>SHIFT_AB_PICKS_FOR_REWARDS10</th>
+              <th>SHIFT_C_PICKS_FOR_REWARDS10</th>
+              <th>REWARDS1_RS</th>
+              <th>REWARDS2_RS</th>
+              <th>REWARDS3_RS</th>
+              <th>REWARDS4_RS</th>
+              <th>REWARDS5_RS</th>
+              <th>REWARDS6_RS</th>
+              <th>REWARDS7_RS</th>
+              <th>REWARDS8_RS</th>
+              <th>REWARDS9_RS</th>
+              <th>REWARDS10_RS</th>
+          </tr>
+            <tr th:each="weaver : ${weaverProductionList}">
+                <td th:text="${weaver.loom}"></td>
+                <td th:text="${weaver.rpm}"></td>
+                <td th:text="${weaver.effPer}"></td>
+                <td th:text="${weaver.prodnPerHr}"></td>
+                <td th:text="${weaver.weftDetails}"></td>
+                <td th:text="${weaver.shiftAB}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards}"></td>
+                <td th:text="${weaver.shiftC}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards2}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards2}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards3}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards3}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards4}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards4}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards5}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards5}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards6}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards6}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards7}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards7}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards8}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards8}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards9}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards9}"></td>
+                <td th:text="${weaver.shiftABPicksForRewards10}"></td>
+                <td th:text="${weaver.shiftCPicksForRewards10}"></td>
+                <td th:text="${weaver.reward1}"></td>
+                <td th:text="${weaver.reward2}"></td>
+                <td th:text="${weaver.reward3}"></td>
+                <td th:text="${weaver.reward4}"></td>
+                <td th:text="${weaver.reward5}"></td>
+                <td th:text="${weaver.reward6}"></td>
+                <td th:text="${weaver.reward7}"></td>
+                <td th:text="${weaver.reward8}"></td>
+                <td th:text="${weaver.reward9}"></td>
+                <td th:text="${weaver.reward10}"></td>
+            </tr>
+
+        </table>
+        </div>
+    <div>
+        <table>
+            <tr>
+                <td>
+                    <form th:action="@{/addNewRewardSlabForm}" method="get">
+                        <input type="submit" name="frmSubmit" id="addNewSlab" value="Add New Slab" class="subButton" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/updateRewardSlabForm}" method="get">
+                        <input type="submit" name="frmSubmit" id="updateSlab" value="Update Slab" class="subButton" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/deleteRewardSlabForm}" method="get">
+                        <input type="submit" name="frmSubmit" id="deleteSlab" value="Delete Slab" class="subButton" />
+                    </form>
+                </td>
+                  </tr>
+              </table>
+          </div>
+          </div>
+      </div>
+      </body>
+      </html>

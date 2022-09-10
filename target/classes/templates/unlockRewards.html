@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/unlockReward.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Unlock Reward</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+         <!--   <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+    <div class="rewardcriteria">
+      <!--  <form th:action="@{/processUnlockRewards}" method="get">-->
+        <form>
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"
+                                    th:selected="${yearSel==year}">
+                            </option>
+                        </select>
+                    </td>
+
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"
+                                    th:selected="${monthSel==month}"></option>
+                        </select>
+                    </td>
+
+                    <td>
+                      <!--  <button type="submit">Unlock Rewards</button> -->
+                        <input type="button" th:onclick="showLoader()" name="submit" value="Unlock Rewards" id="submit1">
+                    </td>
+                    <td id="messageId">
+
+                    </td>
+                   <!-- <td th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"/>-->
+                </tr>
+            </table>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

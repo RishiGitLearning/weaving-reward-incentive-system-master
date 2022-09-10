@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Incentive</p>
+    <table id="mainTable"><tr>
+        <td><li><a th:href="@{/monthlyIncentive}">Monthly Incentive</a></li></td>
+        <!--   <td><li><a th:href="@{/incentive/incentiveHierarchyBasedForm}">MonthWise Incentive</a></li></td>-->
+        <td><li><a th:href="@{/incentiveEmployeewise}">Employeewise Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveEmployeewiseDetails}">Employee Incentive Details</a></li></td>
+        <!-- <td><li><a th:href="@{/incentive/incentivePtax}">Incentive-Ptax</a></li></td>-->
+        <td><li><a th:href="@{/incentiveUnlock}">Incentive Unlock</a></li></td>
+    </tr>
+    </table>
+    <div class="rewardcriteria">
+        <form th:action="@{/incentive/processIncentiveHierarchyForm}" method="get">
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Show Incentive</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div style="height:350px;overflow:auto;">
+            <table class="table table-striped" rules="rows" align="center">
+                <tr>
+                    <th>Emp No</th>
+                    <th>Emp Name</th>
+                    <th>Monthly Basic rate</th>
+                    <th>Attendance Days</th>
+                    <th>Basic Rate Per Day</th>
+                    <th>Actual Basic Amount</th>
+                    <th>Incentive Amount</th>
+                    <th>Total Incentive Amount</th>
+                    <th>Round</th>
+                </tr>
+
+                <tr th:each="employeeIncentive : ${employeeIncentiveList}">
+                    <td th:text="${employeeIncentive.empId}"></td>
+                    <td th:text="${employeeIncentive.empName}"></td>
+                    <td th:text="${employeeIncentive.monthlyBasicRate}"></td>
+                    <td th:text="${employeeIncentive.attendance}"></td>
+                    <td th:text="${employeeIncentive.basicRatePerDay}"></td>
+                    <td th:text="${employeeIncentive.actualBasicAmount}"></td>
+                    <td th:text="${employeeIncentive.incentive}"></td>
+                    <td th:text="${employeeIncentive.totalIncentiveAmount}"></td>
+                    <td th:text="${employeeIncentive.round}"></td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="center">
+            <table align="center">
+                <tr>
+                    <td>Total Incentive</td>
+                    <td>
+                        <input type="text" th:value="${totalMonthIncentive}" name="totalMonthIncentive">
+                    </td>
+                    <td>
+                        <form th:action="@{/exportIncentiveFormData}" method="post" th:object="${weaverRewardList}">
+                            <input type="submit" name="frmSubmit" id="excel" value="Export Data" class="subButton" />
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

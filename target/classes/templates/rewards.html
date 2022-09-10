@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+  <!--  <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Reward</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+           <!-- <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+        <!--    <td><li><a th:href="@{/unlockRewards}">Unlock Reward</a></li></td>
+            <td th:if="${message}" th:text="${message}" th:class="${'alert1 ' + alertClass}"/>-->
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>

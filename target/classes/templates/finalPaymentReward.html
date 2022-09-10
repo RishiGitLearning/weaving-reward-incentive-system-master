@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/finalPaymentReward.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Final Payment-Reward</p>
+    <table id="mainTable"><tr>
+        <td><li><a th:href="@{/incentiveSheet}">Incentive</a></li></td>
+        <td><li><a th:href="@{/incentiveFinalPayment}">Incentive Final Payment</a></li></td>
+        <td><li><a th:href="@{/rewardSheet}">Reward</a></li></td>
+        <td><li><a th:href="@{/rewardFinalPayment}">Reward Final Payment</a></li></td>
+    </tr>
+    </table>
+    <div class="rewardcriteria">
+    <!--    <form th:action="@{/processFinalPaymentReward}" method="get">-->
+        <form>
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"></option>
+                        </select>
+                    </td>
+
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"></option>
+                        </select>
+                    </td>
+
+                    <td>
+                     <!--   <button type="submit">Show Final Reward</button>-->
+                        <input type="button" th:onclick="showLoader()" name="submit" value="Show Final Reward Payment" id="submit1">
+                    </td>
+                    <td id="rewardId">
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div style="height:350px;overflow:auto;">
+            <div align="center">
+                <span id="upload-header-text"></span>
+            </div>
+            <table id="empTable" class="table table-striped" rules="rows" align="center">
+                <tbody>
+
+                </tbody>
+             <!--   <tr>
+                    <th>Sr. No.</th>
+                    <th>Emp No</th>
+                    <th>Emp Name</th>
+                    <th>Salary</th>
+                    <th>PtaxSalary</th>
+                    <th>Reward</th>
+                    <th>PtaxReward</th>
+
+            </tr>
+
+                  <tr th:each="ptax : ${finalPaymentRewardList}">
+                    <td th:text="${ptax.id}"></td>
+                    <td th:text="${ptax.ptEmpCode}"></td>
+                    <td th:text="${ptax.ptEmpName}"></td>
+                    <td th:text="${ptax.ptSalaryGross}"></td>
+                    <td th:text="${ptax.ptSalaryPtax}"></td>
+                    <td th:text="${ptax.ptWvrRewardGross}"></td>
+                    <td th:text="${ptax.ptWvrRewardPtax}"></td>
+                  </tr>-->
+
+            </table>
+        </div>
+
+    </div>
+    <div class="center">
+        <table>
+            <tr>
+                <td>
+                    <form th:action="@{/exportFinalRewardPay}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="pdf" value="Export Pdf Data" class="subButton" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/exportFinalRewardPay}" method="post" th:object="${weaverRewardList}">
+                        <input type="submit" name="frmSubmit" id="excel" value="Export Excel Data" class="subButton" />
+                    </form>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Reward Incentive System</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+	$(function(){
+		$(".nav-sidebar li").click(function(){
+			$(".nav-sidebar li").removeClass("active");
+			$(this).addClass("active");
+		});
+	});
+
+         function submitDbForm()
+        {
+            document.getElementById("dbform").submit();
+        }
+        </script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="position:absolute; left : 25%">Reward Incentive System</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li>
+                    <form style="padding-top: 20px;" th:action="@{/logout}" method="post">
+                        <a style="color : yellow;" class="headerlabel"  th:text="${uname}"></a>
+                        <input class="formbutton" type="submit" value="Sign Out">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <div class="row row-offcanvas row-offcanvas-left">
+
+        <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+            <ul class="nav-sidebar">
+                <li><a th:href="@{/about}" target="rightPanel" style="font-size: 15px;">About</a></li>
+                <li><a th:href="@{/rewards}" target="rightPanel" style="font-size: 15px;">Rewards</a></li>
+                <li><a th:href="@{/incentive}" target="rightPanel" style="font-size: 15px;">Incentive</a></li>
+                <li><a th:href="@{/finalPayment}" target="rightPanel" style="font-size: 15px;">Final Payment</a></li>
+               <!-- <li><a th:href="@{/demoLoader}" target="rightPanel" style="font-size: 15px;">Demo Loader</a></li>-->
+            </ul>
+        </div>
+
+        <div class="col-sm-9 col-md-10 main">
+            <iframe id="rightPanel" name="rightPanel" style="width: 100%; height: 100vh;"> </iframe>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

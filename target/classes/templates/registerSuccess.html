@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>RegistrationForm</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/registration.css}"/>
+</head>
+<body>
+<div class="login-page">
+    <div class="form">
+        <div>
+            <h4>Registration Succeded</h4>
+        </div>
+        <div>
+            <h4>You have signed up successfully</h4>
+            <h4><a th:href="@{/}">Login</a></h4>
+        </div>
+    </div>
+</div>
+</body>
+</html>

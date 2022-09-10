@@ -1,0 +1,110 @@
+.html {
+	height: 80%;
+}
+
+body {
+	height: 80%;
+	padding-left: 3%;
+	padding-right: 3%;
+	padding-top: 2%;
+}
+
+.about {
+    position: fixed;
+	height: 85%;
+	width: 92.5%;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #f8f8f8;
+	text-align: justify;
+	overflow-y: scroll;
+	border: thin;
+	border-color: black;
+	border-style: groove;
+}
+
+.title {
+	color: #55585b;
+	font-family: 'Raleway', sans-serif;
+	font-size: 30px;
+	font-weight: 800;
+	line-height: 36px;
+	margin: 0 0 12px;
+	text-align: center;
+}
+
+.definition {
+	color: black;
+	font-family: 'Raleway', sans-serif;
+	font-size: 14px;
+	font-weight: 500;
+	margin: 0 0 24px;
+}
+
+.link{
+	position: fixed;
+	font-family: 'Raleway', sans-serif;
+	bottom: 2%;
+	height: auto;
+	width: 99%;
+	text-align: center;
+}
+
+.rewardcriteria{
+    position: fixed;
+	height: 67%;
+	width: 89.5%;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #f8f8f8;
+	text-align: justify;
+	#overflow-y: scroll;
+	border: thin;
+	border-color: black;
+	border-style: groove;
+}
+#trDetailedCriteriaTable {
+	font-family: Helvetica, Arial, sans-serif;
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.center {
+  margin: 0;
+  position: absolute;
+  top: 95%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.alert1 {
+   width:15%;
+}
+toptable {
+  width: 50%;
+}
+#yearSel{
+ width:150px;
+}
+#monthSel{
+ width:150px;
+}
+#startdate{
+ width:150px;
+}
+#enddate{
+ width:150px;
+}
+#empNo{
+ width:150px;
+}
+#loomSel{
+ width:150px;
+}
+#mainTable {
+  table-layout:auto;
+  width:85%;
+  text-align:center;
+}

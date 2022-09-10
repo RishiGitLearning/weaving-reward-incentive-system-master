@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+    <script type="text/javascript" th:src="@{/rewardLoomwise.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script type="text/javascript" th:src="@{/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts.js}"></script>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Add New Reward Slab</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/monthlyRewards}">Monthly Reward</a></li></td>
+            <!--   <td><li><a th:href="@{/rewards/showMonthlyRewards}">MonthWise Reward</a></li></td>-->
+            <td><li><a th:href="@{/rewardHierarchyBasedForm}">Daily Reward</a></li></td>
+            <td><li><a th:href="@{/employeeWiseForm}">Employee Reward</a></li></td>
+            <td><li><a th:href="@{/loomWiseForm}">Loom Reward</a></li></td>
+            <td><li><a th:href="@{/rewardSlabMasterForm}" id="rewardSlabMasterId">Reward Slab</a></li></td>
+            <td th:if="${message1}">
+                <li><a th:href="@{/unlockRewards}">Unlock Reward</a></li>
+            </td>
+        </tr>
+    </table>
+
+<div>
+    <form th:action="@{/processNewRewardSlab}" th:object="${weaverProductionTargets}" method="POST">
+        <table align="center">
+            <tr>
+                <td>Loom No. </td>
+                <td><input type="number" th:field="*{loom}" /></td>
+
+                <td>RPM</td>
+                <td><input type="text" th:field="*{rpm}" /></td>
+            </tr>
+            <tr>
+                <td>EFF_PER</td>
+                <td><input type="text" th:field="*{effPer}" /></td>
+
+                <td>PRODN_PER_HR</td>
+                <td><input type="text" th:field="*{prodnPerHr}" /></td>
+            </tr>
+            <tr>
+                <td>WEFT_DETAILS</td>
+                <td colspan="2"><input type="text" th:field="*{weftDetails}" size="40"/></td>
+            </tr>
+            <tr>
+                <td>SHIFT_AB</td>
+                <td><input type="text" th:field="*{shiftAB}" /></td>
+                <td>SHIFT_C</td>
+                <td><input type="text" th:field="*{shiftC}" /></td>
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards}" /></td>
+
+                <td>SHIFT_C_PICKS_FOR_REWARDS</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards}" /></td>
+
+                <td>REWARDS1_RS</td>
+                <td><input type="text" th:field="*{reward1}" /></td>
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS2</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards2}" /></td>
+
+                <td>SHIFT_C_PICKS_FOR_REWARDS2</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards2}" /></td>
+
+                <td>REWARDS2_RS</td>
+                <td><input type="text" th:field="*{reward2}" /></td>
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS3</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards3}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS3</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards3}" /></td>
+                <td>REWARDS3_RS</td>
+                <td><input type="text" th:field="*{reward3}" /></td>
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS4</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards4}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS4</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards4}" /></td>
+                <td>REWARDS4_RS</td>
+                <td><input type="text" th:field="*{reward4}" /></td>
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS5</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards5}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS5</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards5}" /></td>
+                <td>REWARDS5_RS</td>
+                <td><input type="text" th:field="*{reward5}" /></td>
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS6</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards6}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS6</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards6}" /></td>
+                <td>REWARDS6_RS</td>
+                <td><input type="text" th:field="*{reward6}" /></td>
+
+            </tr>
+            <tr>
+
+                <td>SHIFT_AB_PICKS_FOR_REWARDS7</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards7}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS7</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards7}" /></td>
+                <td>REWARDS7_RS</td>
+                <td><input type="text" th:field="*{reward7}" /></td>
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS8</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards8}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS8</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards8}" /></td>
+                <td>REWARDS8_RS</td>
+                <td><input type="text" th:field="*{reward8}" /></td>
+
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS9</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards9}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS9</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards9}" /></td>
+                <td>REWARDS9_RS</td>
+                <td><input type="text" th:field="*{reward9}" /></td>
+
+            </tr>
+            <tr>
+                <td>SHIFT_AB_PICKS_FOR_REWARDS10</td>
+                <td><input type="text" th:field="*{shiftABPicksForRewards10}" /></td>
+                <td>SHIFT_C_PICKS_FOR_REWARDS10</td>
+                <td><input type="text" th:field="*{shiftCPicksForRewards10}" /></td>
+                <td>REWARDS10_RS</td>
+                <td><input type="text" th:field="*{reward10}" /></td>
+            </tr>
+
+            <tr>
+                <td align="center" colspan="6">
+                    <input type="submit" value="Save Reward Slab" />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
+</div>
+</body>
+</html>

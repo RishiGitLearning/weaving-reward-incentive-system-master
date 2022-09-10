@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" th:href="@{/about.css}"/>
+</head>
+<body>
+
+<div class="about">
+    <p class="title">Reward</p>
+    <table id="mainTable">
+        <tr>
+            <td><li><a th:href="@{/rewards/monthlyRewards}">Monthly Reward</a></li></td>
+            <td><li><a th:href="@{/rewards/rewardHierarchyBasedForm}">Reward Forms</a></li></td>
+            <td><li><a th:href="@{/rewards/rewardPtax}">Reward-Ptax</a></li></td>
+        </tr>
+    </table>
+    <div class="rewardcriteria">
+        <form th:action="@{/rewards/processRewardPtax}" method="get">
+            <table align="center">
+                <tr>
+                    <td>Select Year</td>
+                    <td>
+                        <select name="yearSel" id="yearSel">
+                            <option th:each="year : ${yearList}"
+                                    th:value="${year}"
+                                    th:text="${year}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Select Month</td>
+                    <td>
+                        <select name="monthSel" id="monthSel">
+                            <option th:each="month : ${monthList}"
+                                    th:value="${month}"
+                                    th:text="${month}"></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit">Show RewardPtax</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <div style="height:300px;overflow:auto;">
+            <table class="table table-striped" rules="rows" align="center">
+                <tr>
+                    <th>Emp No</th>
+                    <th>Reward Amount</th>
+                    <th>Ptax</th>
+                </tr>
+                <tr th:each="reward : ${rewardPtaxList}">
+                    <td th:text="${reward.ptEmpCode}"></td>
+                    <td th:text="${reward.ptWvrRewardGross}"></td>
+                    <td th:text="${reward.ptWvrRewardPtax}"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
