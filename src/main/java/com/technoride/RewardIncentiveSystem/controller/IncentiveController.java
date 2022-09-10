@@ -565,7 +565,7 @@ public class IncentiveController {
                 totalProduction = totalMonthProd;
                 totalIncForDept = totalDeptIncentive;
 
-                System.out.println("******");
+                System.out.println("*******");
                 int empcount = 0;
                 List<String> empNoList = monthlyAttendanceRepository.findEmpListForInc(pickMonth, pickYear, "");
                 System.out.println("EmpNoList" + empNoList.size());
